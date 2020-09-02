@@ -1,4 +1,4 @@
-package com.example.demo;
+package nils.rest.fibonacci;
 
 //import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import nils.rest.fibonacci.HelloController;
 
 /**import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
