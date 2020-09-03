@@ -1,7 +1,11 @@
 package nils.rest.fibonacci;
 
-//import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.net.URL;
+
+import org.junit.jupiter.api.BeforeEach;
 
 //import java.net.URL;
 
@@ -10,19 +14,19 @@ import org.junit.jupiter.api.Test;
 
 import nils.rest.fibonacci.HelloController;
 
-/**import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
-*/
-//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HelloControllerTest {
 
-/**		@LocalServerPort
+	@LocalServerPort
 	@Value("${local.server.port}")
-	private int port;
+	private int port = 8080;
 
 private URL base;
 
@@ -40,11 +44,19 @@ private URL base;
                 String.class);
         assertThat(response.getBody()).isEqualTo("Greetings from Spring Boot!");
     }
-    */
+    
+    @Test
+    public void getFibonacci() throws Exception{
+    	String expected = "Die Zahl der Fibonacci-Folge an der Stelle 11 lautet 89";
+    	StringBuilder request = new StringBuilder(base.toString()).append("id?id=11");
+    	ResponseEntity<String> response = template.getForEntity(request.toString(),
+                String.class);
+    	assertThat(response.getBody()).isEqualTo(expected);
+    }
+    
     
     @Test
     public void fibonacciTest() {
-    	assertEquals(0, HelloController.calcFibonacci(0));
     	assertEquals(1, HelloController.calcFibonacci(1));
     	assertEquals(1, HelloController.calcFibonacci(2));
     	assertEquals(2, HelloController.calcFibonacci(3));
